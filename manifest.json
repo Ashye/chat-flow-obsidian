@@ -1,0 +1,10 @@
+{
+  "id": "chat-flow",
+  "name": "Chat Flow",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "Chat-like rapid capture panel. Append timestamped messages to Chat.md, move messages to notes, record voice memos.",
+  "author": "",
+  "authorUrl": "",
+  "isDesktopOnly": false
+}

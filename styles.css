@@ -1,0 +1,352 @@
+/* Chat Flow — Obsidian Plugin Styles */
+
+/* ── Container ── */
+.chat-flow-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: var(--background-primary);
+}
+
+/* ── Search ── */
+.chat-flow-search-row {
+    padding: 6px 12px;
+    flex-shrink: 0;
+}
+
+.chat-flow-search-input {
+    width: 100%;
+    padding: 6px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--background-modifier-border);
+    background: var(--background-secondary);
+    color: var(--text-normal);
+    font-size: 13px;
+    box-sizing: border-box;
+}
+
+.chat-flow-search-input:focus {
+    outline: none;
+    border-color: var(--interactive-accent);
+}
+
+.chat-flow-search-input::placeholder {
+    color: var(--text-faint);
+}
+
+/* ── Messages ── */
+.chat-flow-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 12px;
+}
+
+.chat-flow-day-heading {
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--text-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 8px 0 2px 0;
+}
+
+.chat-flow-message {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2px;
+    padding: 3px 6px;
+    border-radius: 6px;
+    position: relative;
+    cursor: default;
+    transition: background 0.15s;
+    margin-bottom: 0;
+}
+
+.chat-flow-message:hover {
+    background: var(--background-modifier-hover);
+}
+
+/* Status icon */
+.chat-flow-msg-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text-faint);
+    transition: color 0.15s;
+}
+
+.chat-flow-msg-icon:hover {
+    color: var(--chat-flow-accent, var(--interactive-accent));
+}
+
+/* Completed message */
+.chat-flow-message.completed .chat-flow-msg-icon {
+    color: var(--chat-flow-accent, var(--interactive-accent));
+}
+
+.chat-flow-message.completed .chat-flow-msg-content {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+    opacity: 0.5;
+}
+
+.chat-flow-message.completed .chat-flow-msg-time {
+    opacity: 0.4;
+}
+
+/* Time */
+.chat-flow-msg-time {
+    flex-shrink: 0;
+    font-size: 10px;
+    color: var(--text-faint);
+    font-family: var(--font-monospace);
+    min-width: 40px;
+}
+
+/* Content */
+.chat-flow-msg-content {
+    flex: 1;
+    font-size: 12px;
+    line-height: 1.4;
+    word-break: break-word;
+    min-width: 0;
+}
+
+.chat-flow-msg-content a {
+    color: var(--interactive-accent);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.chat-flow-msg-content a:hover {
+    text-decoration: underline;
+}
+
+/* Edit input */
+.chat-flow-edit-input {
+    width: 100%;
+    padding: 2px 6px;
+    font-size: 13px;
+    border: 1px solid var(--chat-flow-accent, var(--interactive-accent));
+    border-radius: 4px;
+    background: var(--background-primary);
+    color: var(--text-normal);
+    box-sizing: border-box;
+}
+
+/* ── Message Actions (float over message on Z-axis) ── */
+.chat-flow-msg-actions {
+    position: absolute;
+    top: 50%;
+    right: 2px;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 1px;
+    padding: 1px 3px;
+    background: transparent;
+    border: none;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.12s;
+    z-index: 5;
+}
+
+.chat-flow-message:hover .chat-flow-msg-actions {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.chat-flow-action-btn {
+    width: 22px;
+    height: 22px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, color 0.15s;
+}
+
+.chat-flow-action-btn:hover {
+    background: var(--background-modifier-hover);
+    color: var(--chat-flow-accent, var(--interactive-accent));
+}
+
+/* ── Input Area (single row: textarea + inline buttons) ── */
+.chat-flow-input-wrap {
+    position: relative;
+    padding: 8px 12px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: flex-end;
+}
+
+.chat-flow-input {
+    width: 100%;
+    padding: 10px 70px 10px 16px;
+    border-radius: 22px;
+    border: 2px solid var(--background-modifier-border);
+    background: var(--background-secondary);
+    color: var(--text-normal);
+    font-size: 14px;
+    resize: none;
+    font-family: var(--font-interface);
+    line-height: 1.4;
+    box-sizing: border-box;
+    transition: border-color 0.15s;
+    overflow-y: hidden;
+}
+
+.chat-flow-input:focus {
+    outline: none;
+    box-shadow: none;
+    border-color: var(--chat-flow-accent, var(--interactive-accent));
+    border-width: 2px;
+}
+
+.chat-flow-input::placeholder {
+    color: var(--text-faint);
+}
+
+/* Send button — sits inside the right of the textarea */
+.chat-flow-send-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 14px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background: var(--chat-flow-accent, var(--interactive-accent));
+    color: var(--text-on-accent);
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, transform 0.1s;
+    z-index: 2;
+}
+
+.chat-flow-send-btn:hover {
+    filter: brightness(0.9);
+}
+
+.chat-flow-send-btn:active {
+    transform: scale(0.95);
+}
+
+/* Mic button — same row, absolute positioned */
+.chat-flow-mic-btn {
+    position: absolute;
+    right: 20px;
+    bottom: 14px;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s, color 0.15s;
+    z-index: 2;
+}
+
+.chat-flow-mic-btn:hover {
+    background: var(--background-modifier-hover);
+    color: var(--chat-flow-accent, var(--interactive-accent));
+}
+
+.chat-flow-mic-btn.recording {
+    background: var(--chat-flow-accent, var(--interactive-accent));
+    color: var(--text-on-accent);
+    animation: chat-flow-mic-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes chat-flow-mic-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 var(--chat-flow-accent-alpha, rgba(249, 115, 22, 0.4)); }
+    50%      { box-shadow: 0 0 0 8px transparent; }
+}
+
+/* Fold toggle for completed message groups */
+.chat-flow-fold-toggle {
+    font-size: 12px;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background 0.15s;
+    user-select: none;
+}
+
+.chat-flow-fold-toggle:hover {
+    background: var(--background-modifier-hover);
+    color: var(--text-normal);
+}
+
+.chat-flow-fold-wrapper {
+    margin-left: 4px;
+}
+
+/* ── Load More ── */
+.chat-flow-load-more {
+    text-align: center;
+    padding: 8px;
+    font-size: 12px;
+    color: var(--chat-flow-accent, var(--interactive-accent));
+    cursor: pointer;
+    border-radius: 6px;
+    transition: background 0.15s;
+}
+
+.chat-flow-load-more:hover {
+    background: var(--background-modifier-hover);
+}
+
+/* ── Empty State ── */
+.chat-flow-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.chat-flow-empty-icon {
+    font-size: 32px;
+    margin-bottom: 8px;
+    opacity: 0.5;
+}
+
+.chat-flow-empty p {
+    font-size: 13px;
+    margin: 0;
+}
+
+/* ── Quick Input Modal ── */
+.chat-flow-quick-input .setting-item {
+    border: none;
+    padding: 0;
+}
+
+.chat-flow-quick-input-field {
+    width: 100% !important;
+    font-size: 15px !important;
+}
