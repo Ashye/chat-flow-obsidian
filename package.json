@@ -1,0 +1,20 @@
+{
+  "name": "obsidian-chat-flow",
+  "version": "1.0.0",
+  "description": "Chat-like rapid capture for Obsidian. Append timestamped messages to Chat.md, move to notes, voice recording.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+    "lint": "tsc -noEmit -skipLibCheck"
+  },
+  "keywords": ["obsidian", "obsidian-plugin", "chat", "capture", "quick-note"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "esbuild": "^0.20.0",
+    "obsidian": "^1.4.0",
+    "typescript": "^5.0.0"
+  }
+}

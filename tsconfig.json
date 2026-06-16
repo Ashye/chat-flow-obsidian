@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./",
+    "rootDir": "./",
+    "baseUrl": ".",
+    "allowSyntheticDefaultImports": true
+  },
+  "include": ["*.ts"],
+  "exclude": ["node_modules"]
+}
